@@ -77,8 +77,8 @@ def add_course():
         
         if missing_fields:
             error_message = f"Required fields missing: {', '.join(missing_fields)}"
-            logging.error(error_message)
             flash(error_message, "error")
+            logging.error(error_message)
             return redirect(url_for('add_course'))
 
         course = {
