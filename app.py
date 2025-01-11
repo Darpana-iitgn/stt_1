@@ -90,7 +90,7 @@ def add_course():
     if request.method == 'POST':
 
         required_fields = ['code', 'name', 'instructor', 'semester']
-        missing_fields = [field for field in required_fields if not request.form.get(field)]
+        missing_fields = [field for field in required_fields if not request.form.get(field, '').strip()]
         
         if missing_fields:
             error_message = f"Required fields missing: {', '.join(missing_fields)}"
@@ -99,10 +99,10 @@ def add_course():
             return redirect(url_for('add_course'))
 
         course = {
-            'code': request.form['code'],
-            'name': request.form['name'],
-            'instructor': request.form['instructor'],
-            'semester': request.form['semester'],
+            'code': request.form['code'].strip(),
+            'name': request.form['name'].strip(),
+            'instructor': request.form['instructor'].strip(),
+            'semester': request.form['semester'].strip(),
             'schedule': request.form['schedule'],
             'classroom': request.form['classroom'],
             'prerequisites': request.form['prerequisites'],
