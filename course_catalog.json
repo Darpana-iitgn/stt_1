@@ -20,5 +20,16 @@
         "prerequisites": "Basic Python, Linux",
         "grading": "50% Assignment, 50% Quiz",
         "description": ""
+    },
+    {
+        "code": "CS 102",
+        "name": "DCC",
+        "instructor": "Balgopal ",
+        "semester": "2",
+        "schedule": "Mon, Wed, Fri 10:00-11:00 AM",
+        "classroom": "AB 1/101",
+        "prerequisites": "Computing",
+        "grading": "Midterm 30%, Final 50%, Homework 20%",
+        "description": "Data Centric Computing"
     }
 ]

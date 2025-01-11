@@ -1,5 +1,6 @@
 import json
 import os
+import logging
 from flask import Flask, render_template, request, redirect, url_for, flash
 from opentelemetry import trace
 from opentelemetry.sdk.resources import Resource
