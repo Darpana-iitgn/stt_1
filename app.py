@@ -15,6 +15,19 @@ app = Flask(__name__)
 app.secret_key = 'secret'
 COURSE_FILE = 'course_catalog.json'
 
+#Logging in JSON format
+class JsonFormatter(logging.Formatter):
+    def format(self, record):
+        log_entry = {
+            'timestamp': self.formatTime(record),
+            'level': record.levelname,
+            'message': record.getMessage(),
+            'logger': record.name,
+            'filename': record.pathname,
+            'line': record.lineno
+        }
+        return json.dumps(log_entry, indent=4)
+
 # Configure Logging
 logging.basicConfig(
     level=logging.INFO,
