@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.secret_key = 'secret'
 COURSE_FILE = 'course_catalog.json'
 
-#Logging in JSON format
+# JSON format for logging
 class JsonFormatter(logging.Formatter):
     def format(self, record):
         log_entry = {
@@ -29,13 +29,17 @@ class JsonFormatter(logging.Formatter):
         return json.dumps(log_entry, indent=4)
 
 # Configure Logging
+json_formatter = JsonFormatter()
+
+file_handler = logging.FileHandler("app.log")
+file_handler.setFormatter(json_formatter)
+
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(json_formatter)
+
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.FileHandler("app.log"),  # Log to file
-        logging.StreamHandler()          # Log to console
-    ]
+    handlers=[file_handler, stream_handler]
 )
 
 # OpenTelemetry Setup
