@@ -80,10 +80,13 @@ def handle_exception(e):
     return "Internal Server Error", 500
 
 # Routes
+
+# Homepage
 @app.route('/')
 def index():
     return render_template('index.html')
 
+# Course Catalog
 @app.route('/catalog')
 def course_catalog():
     with tracer.start_as_current_span("course_catalog_span") as span:
@@ -92,6 +95,7 @@ def course_catalog():
         logging.info(f"Accessed course catalog. Total courses: {len(courses)}.")
         return render_template('course_catalog.html', courses=courses)
 
+# Add Course
 @app.route('/add_course', methods=['GET', 'POST'])
 def add_course():
     with tracer.start_as_current_span("add_course_span") as span:
@@ -123,6 +127,7 @@ def add_course():
         logging.info("Accessed the add course page")
         return render_template('add_course.html')
 
+# Find Course
 @app.route('/course/<code>')
 def course_details(code):
     with tracer.start_as_current_span("course_details_span") as span:
@@ -137,6 +142,7 @@ def course_details(code):
         logging.info(f"Accessed course '{course['name']}' with code '{code}'")
         return render_template('course_details.html', course=course)
 
+# Manual Trace
 @app.route("/manual-trace")
 def manual_trace():
     with tracer.start_as_current_span("manual-span", kind=SpanKind.SERVER) as span:
@@ -146,6 +152,7 @@ def manual_trace():
         logging.info("Manual trace executed")
         return "Manual trace recorded", 200
 
+# Auto Instrumented
 @app.route("/auto-instrumented")
 def auto_instrumented():
     logging.info("Accessed auto-instrumented route")
