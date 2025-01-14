@@ -22,14 +22,14 @@
         "description": ""
     },
     {
-        "code": "CS 102",
-        "name": "DCC",
-        "instructor": "Balgopal ",
-        "semester": "2",
-        "schedule": "Mon, Wed, Fri 10:00-11:00 AM",
-        "classroom": "AB 1/101",
-        "prerequisites": "Computing",
-        "grading": "Midterm 30%, Final 50%, Homework 20%",
-        "description": "Data Centric Computing"
+        "code": "CS 201",
+        "name": "Theory of Computing",
+        "instructor": "Bireshwar Das",
+        "semester": "4",
+        "schedule": "Monday, Wednesday 10 am - 11.20 am",
+        "classroom": "10/201",
+        "prerequisites": "DCC",
+        "grading": "70% Exams, 10% Attendance, 20% Quizzes",
+        "description": ""
     }
 ]
